@@ -16,7 +16,7 @@ library("spatstat")
 readLFS<-function(quarter, year){
 
 #Latest data
-test<-read.spss(paste0("//vmt1pr-spss2a/LFS/Master/Quarterly datasets/2004 onwards/",year," Q",quarter,".sav"),to.data.frame=TRUE)
+test<-read.spss(paste0("insert secure area address",year," Q",quarter,".sav"),to.data.frame=TRUE)
 
 
 #Select variables needed
@@ -53,7 +53,7 @@ readLFS_reweight<-function(quarter, year){
   
   #Latest data
   
-  test<-read.spss(paste0("//vmt1pr-spss2a/LFS/Master/Quarterly datasets/2004 onwards/",year," Q",quarter,"_reweighted_Oct20.sav"),to.data.frame=TRUE)
+  test<-read.spss(paste0("insert secure area address",year," Q",quarter,"_reweighted_Oct20.sav"),to.data.frame=TRUE)
   
   
   #Select variables needed
@@ -76,7 +76,6 @@ readLFS_reweight<-function(quarter, year){
   test2 <- test2[which(test2$COUNTRY=="England" & test2$AGE>15 & test2$AGE<65),]
   
   #Re-writes the Q1 and Q2 2020 datsets with the reweighted ones    
-  #saveRDS(object = test2, file = paste0(filepath, "Rds_datasets/Q",quarter, "_", year, ".rds"))
   
   saveRDS(object = test2, file = paste0(filepath, "Rds_datasets/Q",quarter, "_", year, ".rds"))
   
