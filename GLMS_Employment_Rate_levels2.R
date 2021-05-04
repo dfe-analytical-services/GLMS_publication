@@ -3,10 +3,6 @@ library("reshape2")
 library("rlang")
 
 
-#----Versioning----
-
-# 26/03/2019 updated code where weight<-PWT, to select latest variable available.
-
 #----Employment rate by demographic:contents-----
 
 #1.Headline_stats_function finds employment rates, samples sizes and populations
@@ -125,7 +121,7 @@ library("rlang")
   
   assign(paste0("Headline_Q",quarter,"_",year),headline_stats,envir = globalenv())
   
-  #write.csv(headline_stats,paste0("Outputs for GLMS/Headline_Q",quarter,"_",year,".csv"))
+  #write.csv(headline_stats,paste0("Outputs_folder/Headline_Q",quarter,"_",year,".csv"))
   
 }
 
@@ -398,10 +394,10 @@ Graduate_breakdown_year<-function(year){
   
 
   write.csv(output,
-            paste0(filepath, "Outputs_for_GLMS/Graduate_breakdown_lev_", year, ".csv"))
+            paste0(filepath, "Outputs_folder/Graduate_breakdown_lev_", year, ".csv"))
   
   saveRDS(object = output,
-          file = paste0(filepath, "Outputs_for_GLMS/EES_rds/Graduate_breakdown_lev_", year, ".rds"))
+          file = paste0(filepath, "Outputs_folder/Graduate_breakdown_lev_", year, ".rds"))
   
  
   
