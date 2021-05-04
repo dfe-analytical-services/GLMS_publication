@@ -5,24 +5,23 @@
 #these labour market statistics for different graduate types.
 
 #----Version Updates----
-#The GLMS.prj and its associated code is version controlled and kept in the remote repository of SFM-GLMS 
-#URL is https://dfe-gov-uk.visualstudio.com/HEFE-Higher-Education-Analysis/_git/SFM-GLMS
+#The GLMS.prj and its associated code is version controlled and kept in the remote repository where the
 #branch is named based on the reporting year eg branch GLMS_2020V1, where 2020 refers to the year of the survey and V1 is analysis version 1.
 
 #----Datsets Information-----
-#The.spss datasets are kept in "//vmt1pr-spss2a/LFS/Master/Quarterly datasets/2004 onwards". Permission to access
+#The.spss datasets are kept in secured area. Permission to access
 #these files are needed.
 
 #The .rds datasets are kept in the shared area, folder filepath,/Rds_datasets.
 #The .spss files that needed to be manually converted to .csv files as they did not read well are found in the shared area in 
 #folders filepath,/CSV_datasets
 
-#the shared area is "W:/HEA-SLR-TEAM/GLMS/GLMS_2020V1/"
+#the shared area is "insert shared area address"
 #for outputs of analysis version GLMS_2020V1. Check in section 2 that the filepath
 #is correct for the analysis version you are running
 
 #When you covert the LFS files from SPSS to R format they will be sent to the 'rds_datasets' file in the shared area
-#When you create files with summary statistics for employment rates and salaries these will be sent to 'Outputs_for_GLMS' in the shared area
+#When you create files with summary statistics for employment rates and salaries these will be sent to 'insert name of folder i.e Outputs_folder' in the shared area
 
 
 #Contents----
@@ -38,22 +37,22 @@
 #Add in the function to change SPSS data to R data and to upload the converted saved datasets into the global enviroment 2.1.a.
 #This code will also give a warning if the SPSS data has not convert well into R data. If this happens do 1.2 OPTIONAL:csv datasets
 #to R data. 
-source("Code/GLMS/GLMS_from_LFS_data.R")
+source("GLMS_from_LFS_data.R")
 
 #1.2.----OPTIONAL: csv datasets to R data----
 #If spss datasets do not read well use this code to convert to .rds files after
 #they are manually converted to .csv files. 
 # Note you need to input the names of the .csv files into this page script. Then run source("Code/GLMS_from_LFS_data.R") to
 #check all .rds files have been read in correctly
-#source("Code/GLMS/csv_to_rds_data.R")
+#source("csv_to_rds_data.R")
 
 #1.3----Recode variables----
 #Add in the function to recode variables in the LFS data to those used in the publication
-source("Code/GLMS/GLMS_Recode_Variables.R")
+source("GLMS_Recode_Variables.R")
 
 #1.4----Employment Rate----
 #Add in the function to calculate the employment rate
-source("Code/GLMS/GLMS_Employment_Rate_levels2.R")  #this also adds columns to output the 
+source("GLMS_Employment_Rate_levels2.R")  #this also adds columns to output the 
 #employment,unemeployment and population levels that corresponds to the sample size.
 
 #1.5----Salaries----
@@ -65,7 +64,7 @@ source("Code/GLMS/GLMS_Salaries.R")
 start_year = 2007 #Which year do you want to use LFS data from? 
 end_year = 2020 #Which year do you want the LFS data up to?
 
-filepath <- "W:/HEA-SLR-TEAM/GLMS/GLMS_2020V1/"
+filepath <- "insert address of shared area"
 
 #2.1---- OPTIONAL STEP  Convert SPSS datasets to R:output ----
 #Convert all LFS data from Q1 of the start year to Q4 of the end year into R data format
@@ -101,7 +100,7 @@ ifelse(!(2016 %in% start_year:end_year) & 2015 %in% start_year:end_year,
 #assigns missing values to Q1_2015 but you need to make sure datasets 2016 are loaded 
 #too as the value labels are taken from this
 ifelse(2015 %in% start_year:end_year & 2016 %in% start_year:end_year,
-       source("Code/GLMS/assign.R"),NA)
+       source("assign.R"),NA)
        
 
 #3.Outputs:analysis  -----
@@ -125,10 +124,10 @@ list<-lapply(start_year:end_year,function(x)get(paste0("Headline_",x)))
 Yearly_employment<-Reduce(rbind,list)
 
 write.csv(Yearly_employment,
-          paste0(filepath,"Outputs_for_GLMS/Yearly_employment_",start_year,"_",end_year,".csv"))
+          paste0(filepath,"Outputs_folder/Yearly_employment_",start_year,"_",end_year,".csv"))
 
 saveRDS(object = Yearly_employment,
-        file = paste0(filepath, "Outputs_for_GLMS/EES_rds/Yearly_employment_",start_year,"_",end_year,".rds"))
+        file = paste0(filepath, "Outputs_folder/EES_rds/Yearly_employment_",start_year,"_",end_year,".rds"))
 
 #And employment rate for the graduate breakdowns
 Graduate_breakdown_year(end_year)
@@ -145,7 +144,7 @@ write.csv(Yearly_salaries,
           paste0(filepath, "Outputs_for_GLMS/Yearly_salaries_",start_year,"_",end_year,".csv"))
 
 saveRDS(object = Yearly_salaries,
-        file = paste0(filepath, "Outputs_for_GLMS/EES_rds/Yearly_salaries_",start_year,"_",end_year,".rds"))
+        file = paste0(filepath, "Outputs_folder/Yearly_salaries_",start_year,"_",end_year,".rds"))
 
 #And salaries for the graduate breakdowns
 
@@ -155,18 +154,18 @@ Graduate_breakdown_salaries(end_year)
 #Add in scripts to find the proportion of employed people that work part time.
 
 # Non graduates with defined demographic breakdowns
-source("Code/GLMS/GLMS_proportion_grad_brk.R")
+source("GLMS_proportion_grad_brk.R")
 # Graduates with demographic breakdowns
-source("Code/GLMS/GLMS_proportion_nongrad_brk.R")
+source("GLMS_proportion_nongrad_brk.R")
 # Graduates and  Non Graduates by  Working Age (16-64) 
-source("Code/GLMS/GLMS_proportion.R")
+source("GLMS_proportion.R")
 
 #3.5----Output:Confidence Intervals----
 
-source("Code/GLMS/GLMS_confidence_intervals.R")
+source("GLMS_confidence_intervals.R")
 
 
-#4.----convert outputs of GLMS for use on EES platform----
+#4.----convert outputs of GLMS for use on (Explore Education Statistics) EES platform----
 #Variables
 
 year <- end_year
@@ -175,6 +174,6 @@ year <- end_year
 library(stringi)
 label_EES <-as.numeric(paste0(start_year,stri_sub(end_year,-2,-1)))
 
-source("Code/EES_Code/EES_Outputs.R")
+source("EES_Outputs.R")
 
 
