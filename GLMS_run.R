@@ -174,6 +174,16 @@ year <- end_year
 library(stringi)
 label_EES <-as.numeric(paste0(start_year,stri_sub(end_year,-2,-1)))
 
-source("EES_Outputs.R")
+# Employment Rates and Salaries for Grads,PostGrad and Non Grad with defined demographic profiles
+source("Grad_BreakDown.R")
+
+#Yearly Employment Rates and Salaries for Grads,PostGrad and Non Grad
+source("TimeSeries.R")
+
+#Proportions of Part time workers timeseries
+source("timeSeries_proportions.R")
+
+#Quarterly Employment Rates and confidence intervals for Grads,PostGrad and Non Grad
+source("Quart_TimeSeries.R")
 
 
