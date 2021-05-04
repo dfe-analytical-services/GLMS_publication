@@ -68,11 +68,7 @@ dataset$Graduate_Type[dataset[,c(hiqual_var)]=="Higher degree"
                       & dataset$HIGHO != "Dont know"]<-"PostGrad"
 
 
-#Note, this excludes those with level 8 Certificates, Diplomas or awards, or level 7 diplomas.
-  #Note last year the level 7 award was mistakenly included in the analysis-  I think it needs to be set to 'not in scope'
-  #Note this analysis also includes level 6 awards, diplomas and certificates.
-  #This contradicts Annex A of the methodology: Again I think they need to be excluded- set to 'Not in Scope'
-  #Note those who don't know what their higher degree is- but have a first degree are excluded from the analysis- should maybe be mentioned in the methodology
+  #Note those who don't know what their higher degree is- but have a first degree are excluded from the analysis
 dataset$Graduate_Type[dataset[,c(hiqual_var)]=="Level 8 Diploma"|
                         dataset[,c(hiqual_var)]=="Level 8 Certificate"|
                         dataset[,c(hiqual_var)]=="Level 8 Award"|
@@ -154,9 +150,6 @@ dataset$ETHNICITY[dataset$ETH11EW %in% c("Mixed / Multiple ethnic groups" ,"Chin
 }
 
 #----Define Subject Type----
-#Note the version used in 2016 causes overlap between the categories.Doesn't seem to fit the derivation of SNGDEGB
-#Updated to look at undergraduate subject if an undergrad but postgrad subject if a postgrad
-#Medicine, Dentistry
 if("SNGDEGB" %in% names(dataset)){
 dataset$STEM[dataset$SNGDEGB %in% 1:9]<- 1
 #10.1~Economics, Law, Business
