@@ -14,9 +14,9 @@
 
 #The .rds datasets are kept in the shared area, folder filepath,/Rds_datasets.
 #The .spss files that needed to be manually converted to .csv files as they did not read well are found in the shared area in 
-#folders filepath,/CSV_datasets
+#folders filepath/CSV_datasets
 
-#the shared area is "insert shared area address"
+#the shared area is "shared area address"
 #for outputs of analysis version GLMS_2020V1. Check in section 2 that the filepath
 #is correct for the analysis version you are running
 
@@ -42,7 +42,7 @@ source("GLMS_from_LFS_data.R")
 #1.2.----OPTIONAL: csv datasets to R data----
 #If spss datasets do not read well use this code to convert to .rds files after
 #they are manually converted to .csv files. 
-# Note you need to input the names of the .csv files into this page script. Then run source("Code/GLMS_from_LFS_data.R") to
+# Note you need to input the names of the .csv files into this page script. Then run source("GLMS_from_LFS_data.R") to
 #check all .rds files have been read in correctly
 #source("csv_to_rds_data.R")
 
