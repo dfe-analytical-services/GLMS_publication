@@ -1,5 +1,5 @@
 #----Convert .csv files into .rds files-----
-#if the source("Code/GLMS_from_LFS_data.R") has identified  .rds datasets that has not read in well, manually convert these files 
+#if the source("GLMS_from_LFS_data.R") has identified  .rds datasets that has not read in well, manually convert these files 
 #to .csv files, then Use this script to convert the .csv files into .rds files.
 
 #This function will  read the csv, subset and filter as in the function above
