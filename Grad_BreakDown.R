@@ -1,19 +1,15 @@
 #-----Introduction----
 
 #x is end_year
-#Graduate Labour Market Statistics has historically been published on GOV.UK.The supporting data with worksheet title Graduate Breakdowns by characteristic.
-# comes from:
 #1.Graduate_breakdown_x.csv (Gives Employment Rates) 
 #2. GRAD_SAL_x.csv (Gives Salaries)
 #3.young_grad_sal_x.csv (Gives Salaries)
-#The GLMS project that generates these csv files and the corresponding rds files are fround in
-# https://dfe-gov-uk.visualstudio.com/HEFE-Higher-Education-Analysis/_git/SFM-LFS-Analysis in the GLMS_2020V1 branch
+
 
 
 #----Description of Script----
 #This scripts takes the data  Graduate_breakdown_x.rds,GRAD_SAL_x.rds files and 
 #and young_grad_sal_x.rds and puts it in the format needed for the new (Explore Education and Statistic Platform) EES  platform
-# see https://rsconnect/rsc/stats-production-guidance/
 
 #Specifically:
 #(i) Employment Rates and Salaries for Graduate Breakdowns where the demographic is Age Group is put into
@@ -40,11 +36,11 @@ library(lubridate)
 #----Upload outputs of GLMS.prj ----
 #The rds outputs from the GLMS program are uploaded from the shared area
 
-Graduate_breakdown_x<-readRDS(paste0(filepath, "Outputs_for_GLMS/EES_rds/Graduate_breakdown_lev_", year, ".rds"))
+Graduate_breakdown_x<-readRDS(paste0(filepath, "Outputs_folder/Graduate_breakdown_lev_", year, ".rds"))
 
-grad_sal_x <-readRDS(paste0(filepath, "Outputs_for_GLMS/EES_rds/grad_sal_", year, ".rds"))
+grad_sal_x <-readRDS(paste0(filepath, "Outputs_folder/grad_sal_", year, ".rds"))
 
-young_grad_sal_x <- readRDS(paste0(filepath, "Outputs_for_GLMS/EES_rds/young_grad_sal_", year, ".rds"))
+young_grad_sal_x <- readRDS(paste0(filepath, "Outputs_folder/young_grad_sal_", year, ".rds"))
 
 
 
@@ -88,7 +84,7 @@ Graduate_breakdown_c<-Graduate_breakdown_b%>%
   filter(!graduate_breakdown=="Pass")%>%
   filter(!graduate_breakdown=="61-64")
 
-#For Sample Sizes <= 30 need to surpress the employment rate values in the data, Footnote should be Data not available due to small sample size (fewer than 30)		
+#For Sample Sizes <= 30 need to surpress the employment rate values in the data, Footnote should be Data to small sample size (fewer than 30)		
 #use ":" to label these value
 Graduate_breakdown_d<-Graduate_breakdown_c%>%
   mutate(Employment_rate=ifelse(Employed_sample>=31,Employment_rate, ":"))%>%
@@ -96,7 +92,7 @@ Graduate_breakdown_d<-Graduate_breakdown_c%>%
   mutate(Unemployment_rate=ifelse(Unemployed_sample>=31,Unemployment_rate, ":"))%>%
   mutate(Inactivity_rate=ifelse(Inactive_sample>=31,Inactivity_rate, ":"))
 
-#Remove data  that does not belong ingraduate_group=="Graduates:21-30", namely  graduate_breakdown=31+
+#Remove data  that does not belong in graduate_group=="Graduates:21-30", namely  graduate_breakdown=31+
 Graduate_breakdown_e<-Graduate_breakdown_d%>%
   filter(!(graduate_characteristic=="AgeGroup" & graduate_group=="Graduates:21-30"& graduate_breakdown=="31-40"))%>%
   filter(!(graduate_characteristic=="AgeGroup" & graduate_group=="Graduates:21-30"& graduate_breakdown=="41-50"))%>%
@@ -172,7 +168,7 @@ GradBreak_Employ_Demographics<-Graduate_breakdown_fin%>%
 
 #Save Gradbreakdown Employment Rates that do not include Demographics=Age Group 
 readr::write_csv(GradBreak_Employ_Demographics,
-          paste0(filepath, "Outputs_for_GLMS/EES_csv/GradBreak_Employ_Demographics_",year,".csv"),quote = FALSE)
+          paste0(filepath, "Outputs_for_folder/EES_csv/GradBreak_Employ_Demographics_",year,".csv"),quote = FALSE)
 
 
 #----QA CHECKS:Employment Rates----
@@ -226,7 +222,7 @@ GradBreak_Employ_Demographics.meta <- data.frame("col_name" = c("Employment_rate
 
 
 readr::write_csv(GradBreak_Employ_Demographics.meta,
-          paste0(filepath, "Outputs_for_GLMS/EES_csv/GradBreak_Employ_Demographics_",year,".meta.csv"),quote = FALSE)
+          paste0(filepath, "Outputs_folder/EES_csv/GradBreak_Employ_Demographics_",year,".meta.csv"),quote = FALSE)
 
 
 #----data:Median Salaries from Grad salaries ----
@@ -274,8 +270,7 @@ young_grad_sal_x_b<-young_grad_sal_x_a%>%
 #Join grad_sal_x and young_grad_sal_x to make one large table
 All_grad_sal_x<-bind_rows(grad_sal_x_b,young_grad_sal_x_b)
 
-#adjust median to give yearly median salary to the closest Â£500. See data
-# and assumptions log for more information on rounding convention used
+#adjust median to give yearly median salary to the closest £500. 
 All_grad_sal_x_a<-All_grad_sal_x%>%
   mutate(median=ifelse(leap_year(time_period),median*366/7,median*365/7))%>%
   mutate(p=median%%500)%>%  
@@ -432,7 +427,6 @@ All_grad_sal_x_fin$time_period <- as.character(All_grad_sal_x_fin$time_period)
 #Employment Rate for different AgeGroups of Graduates will be combined with salaries in section Employment Rate & Salary
 GradBreak_salary_AgeGroup<-All_grad_sal_x_fin%>%
   filter(graduate_characteristic == "Age Group")
-#write.csv(GradBreak_salary_AgeGroup,"//lonnetapp01/higher education analysis/HE Analysis/Analysis/GLMS/GLMS_2020V1/Outputs_for_GLMS/EES_csv/GradBreak_salary_AgeGroup_2019.csv",row.names = FALSE,quote = FALSE,fileEncoding = "UTF-8")
 
 #Salaries for different Demographics of Graduates that DO NOT include Demographics=AgeGroup
 GradBreak_salary_Demographics<-All_grad_sal_x_fin%>%
@@ -458,7 +452,7 @@ if(nrow(anti_join(GradBreak_salary_bind,All_grad_sal_x_fin))==0){
 
 #Save Salary Data for Graduate Breakdown for all demographics except age group
 readr::write_csv(GradBreak_salary_Demographics,
-          paste0(filepath, "Outputs_for_GLMS/EES_csv/GradBreak_salary_Demographics_",year,".csv"),quote = FALSE)
+          paste0(filepath, "Outputs_folder/EES_csv/GradBreak_salary_Demographics_",year,".csv"),quote = FALSE)
 
 
 
@@ -492,14 +486,7 @@ GradBreak_salary_Demographics.meta <- data.table("col_name" = c("median",
 GradBreak_salary_Demographics2.meta <- as.data.frame(sapply(GradBreak_salary_Demographics.meta, function(x) gsub("Â£", "£", x)))
 
 write.csv(GradBreak_salary_Demographics2.meta,
-          paste0(filepath, "Outputs_for_GLMS/EES_csv/GradBreak_salary_Demographics_",year,".meta.csv"),quote = FALSE,row.names = FALSE)
-
-
-#OPTIonal:encoding------------
-#In scenario that you are running this script line by line use write_csv to add encoding automatically
-#readr::write_csv(GradBreak_salary_Demographics.meta,
-#paste0(filepath, "Outputs_for_GLMS/EES_csv/GradBreak_salary_Demographics_",year,".meta.csv"),quote = FALSE)
-
+          paste0(filepath, "Outputs_folder/EES_csv/GradBreak_salary_Demographics_",year,".meta.csv"),quote = FALSE,row.names = FALSE)
 
 
 #------EMPLOYMENT RATE & SALARY for graduate_characteristic == Age Group----
@@ -540,7 +527,7 @@ GradBreak_AgeGroup_fin<-GradBreak_AgeGroup%>%
 #Save Gradbreakdown Employment Rates that do not include Demographics=Age Group 
 
 write_csv(GradBreak_AgeGroup_fin,
-          paste0(filepath, "Outputs_for_GLMS/EES_csv/GradBreak_AgeGroup_",year,".csv"),quote = FALSE)
+          paste0(filepath, "Outputs_folder/EES_csv/GradBreak_AgeGroup_",year,".csv"),quote = FALSE)
 
 
 
@@ -577,5 +564,5 @@ GradBreak_AgeGroup.meta <- data.frame("col_name" = c("Employment_rate",
 
 
 readr::write_csv(GradBreak_AgeGroup.meta,
-          paste0(filepath, "Outputs_for_GLMS/EES_csv/GradBreak_AgeGroup_",year,".meta.csv"),quote = FALSE)
+          paste0(filepath, "Outputs_folder/EES_csv/GradBreak_AgeGroup_",year,".meta.csv"),quote = FALSE)
 
