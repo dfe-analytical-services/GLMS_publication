@@ -1,10 +1,4 @@
 
-#----Versioning----
-
-# 26/03/2019 updated code where weight<-PIWT, to select latest variable available.
-#09/04/2019 updated to add time series for salaries by gender, and by age and gender
-#09/04/2019 updated to add graduate breakdown of salaries by industry and gender
-
 
 #----Employment rate by demographic----
 
@@ -12,9 +6,8 @@
 #Find the median, lower and upper quartiles of salaries by demographic characteristic, and reshape (melt) data to have the characteristic as a variable rather than 
 #column name
 
-#Note this gives different answers to those in the 2016 publication due to a different methodology to calculate the percentiles.
-#The method used in SPSS code (using CTABLES) to calcualte percentiles was not the best method: http://www-01.ibm.com/support/docview.wss?uid=swg21480663
-#This instead uses a weighted average method to provide an unbiased estimate. (as in method 2 here: https://www.xycoon.com/quartiles.htm)
+
+# uses a weighted average method to provide an unbiased estimate. (as in method 2 here: https://www.xycoon.com/quartiles.htm)
 
 Average_salary_by<-function(dataset,demographic){
   #find the weight variable
@@ -131,8 +124,7 @@ Average_Salaries<-function(year){
   
   #rename the young_grad_sal dataset to reference the year and quarter it's run on and output to the global environment.
   assign(paste0("Sal_",year),all_sal,envir = globalenv())
-  #Also write to an Excel file for ease of use by economics team.
-  #write.csv(all_sal,paste0("Outputs for GLMS/SAL_",year,".csv"))
+
 }
 
 #-----Graduate Breakdown salaries(16-64) & Most recent year only------
@@ -270,10 +262,10 @@ grad_dat_reform<-function(dataset){
   assign(paste0("grad_sal_",year),grad_sal,envir = globalenv())
   #Also write to an Excel file for ease of use by economics team.
   
-  write.csv(grad_sal,paste0(filepath, "Outputs_for_GLMS/GRAD_SAL_",year,".csv"))
+  write.csv(grad_sal,paste0(filepath, "Outputs_folder/GRAD_SAL_",year,".csv"))
   
   saveRDS(object = grad_sal,
-          file = paste0(filepath, "Outputs_for_GLMS/EES_rds/grad_sal_", year, ".rds"))
+          file = paste0(filepath, "Outputs_folder/grad_sal_", year, ".rds"))
   
   
   #----Graduate Break down Salaries (21-30):young graduates----
@@ -348,15 +340,14 @@ grad_dat_reform<-function(dataset){
   
   #rename the young_grad_sal dataset to reference the year and quarter it's run on and output to the global environment.
   assign(paste0("young_grad_sal_",year),young_grad_sal,envir = globalenv())
-  #Also write to an Excel file for ease of use by economics team.
- 
-  write.csv(young_grad_sal,paste0(filepath, "Outputs_for_GLMS/YOUNG_GRAD_SAL_", year, ".csv"))
+
+  write.csv(young_grad_sal,paste0(filepath, "Outputs_folder/YOUNG_GRAD_SAL_", year, ".csv"))
   
   saveRDS(object = young_grad_sal,
-          file = paste0(filepath, "Outputs_for_GLMS/EES_rds/young_grad_sal_", year, ".rds"))
+          file = paste0(filepath, "Outputs_folder/young_grad_sal_", year, ".rds"))
   
   }
   
 
-#Graduate_breakdown_salaries(2019)
+
 
