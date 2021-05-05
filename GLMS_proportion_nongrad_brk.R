@@ -182,8 +182,8 @@ sapply(start_year:end_year, function(y)sapply(1:4, function(x)QA_quart_NonGradjo
 
 #4.2 other check_1/4 data sets
 #(i)Sample sizes
-#Are the sample sizes large enough ? Historically yearly data sets should have a sample size of >=31. Decide that quarterly Part-part-time proportions
-#should be based on samples sizes >=31
+#Are the sample sizes large enough ? t quarterly Part-part-time proportions
+#are based on samples sizes >=31
 #(ii) Are there any NA's or 
 #(iii)Zeros in the tables
 QA_quart_NonGradproportion <- function(quarter,year){
@@ -276,7 +276,7 @@ NonGrad_yr_proportion<-Reduce(rbind, NonGrad_list_yr) %>%
   mutate(graduate_type = "Non Grad")
 
 saveRDS(object = NonGrad_yr_proportion,
-        file = paste0(filepath, "Outputs_for_GLMS/EES_rds/NonGrad_yr_proportion_",start_year,"_",end_year,".rds"))
+        file = paste0(filepath, "Outputs_folder/EES_rds/NonGrad_yr_proportion_",start_year,"_",end_year,".rds"))
 
 #6.1 -----QA yearly function output----
 list_nonGrad_yr<- lapply(start_year:end_year,function(x)get(paste0("join_Non-Grad_data_Qa_",x)))
