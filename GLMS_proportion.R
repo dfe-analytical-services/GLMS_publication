@@ -93,7 +93,7 @@ sapply(start_year:end_year, function(y)sapply(1:4, function(x)pt_proportion_a(x,
 
 #3. ----QA: quarterly datasets-----
 #Things to check include:
-#Are the sample sizes large enough ? Historically yearly data sets should have a sample size of >=31. Decide that quarterly Part-part-time proportions
+#Are the sample sizes large enough ? 
 # Check if quarterly data have samples sizes >=31
 
 QA_quart_proportion <- function(quarter,year){
@@ -162,7 +162,7 @@ timeseries_pt_proportion <- Reduce(rbind,list_timeseries_pt_prop) %>%
   mutate(Breakdown = "16-64")
 
 saveRDS(object = timeseries_pt_proportion,
-        file = paste0(filepath, "Outputs_for_GLMS/EES_rds/timeseries_pt_proportion_",start_year,"_",end_year,".rds"))
+        file = paste0(filepath, "Outputs_folder/timeseries_pt_proportion_",start_year,"_",end_year,".rds"))
 
 
 #4.1 ----QA summary table----
