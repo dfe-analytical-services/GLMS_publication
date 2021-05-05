@@ -1,16 +1,12 @@
 #-----Introduction----
-#"Graduate Labour Market Statistics has historically been published on GOV.UK The supporting data with worksheet titles: 
+# The supporting data with worksheet titles: 
 #  Headline Statistics by Year 
 #  Headline Statistics 
 # are generated from the files Yearly_employment_rates.csv and Yearly_salaries.csv. 
 
-#The GLMS project that is used to make Yearly_employment_rates.csv and Yearly_salaries.csv and the corresponding rds files 
-# is fround in https://dfe-gov-uk.visualstudio.com/HEFE-Higher-Education-Analysis/_git/SFM-LFS-Analysis  . The branch is GLMS_V12020
-
 #----Description of Script----
 #This scripts takes the data in Yearly_employment_rates.rds and Yearly_salaries.rds
 #and puts it in the format needed for the new DfE EES platform.
-# see https://rsconnect/rsc/stats-production-guidance/
 
 #Specifically:
 #(i) Employment Rates for the Time Series is found in
@@ -34,9 +30,9 @@ library(lubridate)
 #The outputs from the GLMS program are uploaded from the shared area
 
 
-Yearly_employment_rates<-readRDS(paste0(filepath, "Outputs_for_GLMS/EES_rds/Yearly_employment_",start_year,"_",end_year,".rds"))
+Yearly_employment_rates<-readRDS(paste0(filepath, "Outputs_folder/EES_rds/Yearly_employment_",start_year,"_",end_year,".rds"))
 
-Yearly_salaries<-readRDS(paste0(filepath, "Outputs_for_GLMS/EES_rds/Yearly_salaries_",start_year,"_",end_year,".rds"))
+Yearly_salaries<-readRDS(paste0(filepath, "Outputs_folder/EES_rds/Yearly_salaries_",start_year,"_",end_year,".rds"))
 
 
 
@@ -117,7 +113,7 @@ Employment_Rates_fin<-Employment_Rates_b%>%
 
 
 readr::write_csv(Employment_Rates_fin,
-          paste0(filepath, "Outputs_for_GLMS/EES_csv/Employment_Rates_by_Graduate_Type_",label_EES,".csv"),quote = FALSE)
+          paste0(filepath, "Outputs_folder/EES_csv/Employment_Rates_by_Graduate_Type_",label_EES,".csv"),quote = FALSE)
 
 
 
@@ -162,7 +158,7 @@ Employment_Rates.meta <- data.frame("col_name" = c("Employment_rate",
 
 
 readr::write_csv(Employment_Rates.meta,
-          paste0(filepath, "Outputs_for_GLMS/EES_csv/Employment_Rates_by_Graduate_Type_",label_EES,".meta.csv"),quote = FALSE)
+          paste0(filepath, "Outputs_folder/EES_csv/Employment_Rates_by_Graduate_Type_",label_EES,".meta.csv"),quote = FALSE)
 
 
 #----data file: Median Salaries by Year from Yearly_salaries: data file----
@@ -246,7 +242,7 @@ Yearly_salaries_new_fin<-Yearly_salaries_new_d%>%
 
 
 readr::write_csv(Yearly_salaries_new_fin,
-          paste0(filepath, "Outputs_for_GLMS/EES_csv/Yearly_salaries_by_gender_",label_EES,".csv"),quote = FALSE)
+          paste0(filepath, "Outputs_folder/EES_csv/Yearly_salaries_by_gender_",label_EES,".csv"),quote = FALSE)
 
 
 
@@ -275,16 +271,12 @@ Yearly_salaries_by_gender.meta <- data.frame("col_name" = c("median", "age_group
 
 
 
-#OPTIONAL:encoding step------------------
-#Only use if using Source function to run this script. Since source function automatically adds encoding 
+#encoding step------------------
+# use if using Source function to run this script. Since source function automatically adds encoding 
 Yearly_salaries_by_gender2.meta <- as.data.frame(sapply(Yearly_salaries_by_gender.meta, function(x) gsub("Â£", "£", x)))
 
 write.csv(Yearly_salaries_by_gender2.meta,
           paste0(filepath, "Outputs_for_GLMS/EES_csv/Yearly_salaries_by_gender_", label_EES, ".meta.csv"),quote = FALSE,row.names = FALSE)
 
 
-#OPTIonal:encoding------------
-#In scenario that you are running this script line by line use write_csv to add encoding automatically
-#readr::write_csv(Yearly_salaries_by_gender.meta,
-          #paste0(filepath, "Outputs_for_GLMS/EES_csv/Yearly_salaries_by_gender_", label_EES, ".meta.csv"),quote = FALSE)
 
