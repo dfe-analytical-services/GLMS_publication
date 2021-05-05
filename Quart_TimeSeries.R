@@ -1,17 +1,11 @@
-#----Introduction-----
-#"Graduate Labour Market Statistics has historically been published on GOV.UK 
+#----Introduction----- 
 #The GLMS supporting data with worksheet title: 
 #  Quarterly Time Series Data 
 #has been generated from Emp_confidence_Intervals.csv   
 
-#This worksheet is from  the outputs of the GLMS.prj
-#The  GLMS.prj that is used to make Emp_confidence_Intervals.csv and and the corresponding rds files 
-# is fround in https://dfe-gov-uk.visualstudio.com/HEFE-Higher-Education-Analysis/_git/SFM-LFS-Analysis branch GLMS_2020V1
-
 #----Description of Script----
 #This scripts takes the data in Emp_confidence_Intervals.csv
 #and puts it in the format needed for the new DfE EES platform.
-# see https://rsconnect/rsc/stats-production-guidance/
 
 #Specifically:
 #(i) Employment Rates for the Emp_confidence_Intervals is found in
@@ -31,7 +25,7 @@ library(lubridate)
 #----Upload data ----
 #The outputs from the GLMS program are uploaded from the shared area
 
-Emp_Confidence_interval<-readRDS(paste0(filepath, "Outputs_for_GLMS/EES_rds/Emp_confidence_Intervals_",start_year,"_",end_year,".rds"))
+Emp_Confidence_interval<-readRDS(paste0(filepath, "Outputs_folder/Emp_confidence_Intervals_",start_year,"_",end_year,".rds"))
 
 #----data file: Quarterly Time Series (Employment Rates)-----
 
@@ -138,7 +132,7 @@ Emp_Confidence_interval_fin<-Emp_Confidence_interval_g%>%
          "Unemp_prop_lower")
 
 write.csv(Emp_Confidence_interval_fin,
-          paste0(filepath, "Outputs_for_GLMS/EES_csv/Employment_Rate_by_Quarterly_Time_Series_",label_EES,".csv"),row.names = FALSE,quote = FALSE,fileEncoding = "UTF-8")
+          paste0(filepath, "Outputs_folder/EES_csv/Employment_Rate_by_Quarterly_Time_Series_",label_EES,".csv"),row.names = FALSE,quote = FALSE,fileEncoding = "UTF-8")
 
 
 #QA check for NA's, zeros or surpressed values
@@ -202,6 +196,6 @@ Emp_Confidence_interval.meta <- data.frame("col_name" = c("Emp_prop",
 
 
 write.csv(Emp_Confidence_interval.meta,
-          paste0(filepath, "Outputs_for_GLMS/EES_csv/Employment_Rate_by_Quarterly_Time_Series_",label_EES,".meta.csv"),row.names = FALSE,quote = FALSE,fileEncoding = "UTF-8")
+          paste0(filepath, "Outputs_folder/EES_csv/Employment_Rate_by_Quarterly_Time_Series_",label_EES,".meta.csv"),row.names = FALSE,quote = FALSE,fileEncoding = "UTF-8")
 
 
