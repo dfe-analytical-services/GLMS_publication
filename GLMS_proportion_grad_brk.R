@@ -185,8 +185,8 @@ sapply(start_year:end_year, function(y)sapply(1:4, function(x)QA_quart_Gradjoin 
 
 #4.2 other check_1/4 data set
 #(i)Sample sizes
-#Are the sample sizes large enough ? Historically yearly data sets should have a sample size of >=31. Decide that quarterly Part-part-time proportions
-#should be based on samples sizes >=31
+#Are the sample sizes large enough ?
+#  Part-part-time proportions are based on samples sizes >=31
 #(ii) Are there any NA's or 
 #(iii)Zeros in the tables
 
@@ -272,7 +272,7 @@ grad_yr_proportion<-Reduce(rbind,grad_list_yr) %>%
   mutate(graduate_type = "Graduate")            # label with graduate type
 
 saveRDS(object = grad_yr_proportion,
-        file = paste0(filepath, "Outputs_for_GLMS/EES_rds/grad_yr_proportion_",start_year,"_",end_year,".rds"))
+        file = paste0(filepath, "Outputs_folder/grad_yr_proportion_",start_year,"_",end_year,".rds"))
 
 
 #6.1 -----QA summary table----
