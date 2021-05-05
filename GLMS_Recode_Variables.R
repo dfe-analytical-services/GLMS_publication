@@ -63,7 +63,7 @@ if("DEGREE4" %in% names(dataset)){
 
 #For 2006 Degree type is set by DEGREE4, not DEGREE7
 
-#Note this includes 'Other Post Grad degree or professional qual' as in Annex A
+#Note this includes 'Other Post Grad degree or professional qual' 
 dataset$Graduate_Type[dataset[,c(hiqual_var)]=="Higher degree" 
                       & dataset$HIGHO != "Dont know"]<-"PostGrad"
 
