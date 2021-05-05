@@ -4,25 +4,6 @@
 #of employed people that work part time based on various characteristics. The analysis looks at
 #these labour market statistics for different graduate types.
 
-#----Version Updates----
-#The GLMS.prj and its associated code is version controlled and kept in the remote repository where the
-#branch is named based on the reporting year eg branch GLMS_2020V1, where 2020 refers to the year of the survey and V1 is analysis version 1.
-
-#----Datsets Information-----
-#The.spss datasets are kept in secured area. Permission to access
-#these files are needed.
-
-#The .rds datasets are kept in the shared area, folder filepath,/Rds_datasets.
-#The .spss files that needed to be manually converted to .csv files as they did not read well are found in the shared area in 
-#folders filepath/CSV_datasets
-
-#the shared area is "shared area address"
-#for outputs of analysis version GLMS_2020V1. Check in section 2 that the filepath
-#is correct for the analysis version you are running
-
-#When you covert the LFS files from SPSS to R format they will be sent to the 'rds_datasets' file in the shared area
-#When you create files with summary statistics for employment rates and salaries these will be sent to 'insert name of folder i.e Outputs_folder' in the shared area
-
 
 #Contents----
 #1. This sections sources functions
@@ -110,7 +91,6 @@ ifelse(2015 %in% start_year:end_year & 2016 %in% start_year:end_year,
 sapply(start_year:end_year, function(y)sapply(1:4, function(x)recode_variables(x,y)))
 
 #3.2----Output employment rates-------
-#Note be careful with the weights for this function.
 #This outputs the proportion in employment for each quarter. The script also finds the average mean employment rate for a year.
 #This reduces seasonality in the data
 
@@ -141,7 +121,7 @@ list<-lapply(start_year:end_year,function(x)get(paste0("Sal_",x)))
 Yearly_salaries<-Reduce(rbind,list)
 
 write.csv(Yearly_salaries,
-          paste0(filepath, "Outputs_for_GLMS/Yearly_salaries_",start_year,"_",end_year,".csv"))
+          paste0(filepath, "Outputs_folder/Yearly_salaries_",start_year,"_",end_year,".csv"))
 
 saveRDS(object = Yearly_salaries,
         file = paste0(filepath, "Outputs_folder/Yearly_salaries_",start_year,"_",end_year,".rds"))
