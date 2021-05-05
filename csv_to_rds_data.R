@@ -10,7 +10,7 @@
 
 
 Catch_remaining_datasets<-function(quarter, year){
-  test <-read.csv(paste0(filepath, "CSV_datasets/", year," Q",quarter,".csv"))
+  test <-read.csv(paste0(filepath, "csv_datasets/", year," Q",quarter,".csv"))
   
   if(dim(test)[1]==0){#add in error warning 
     stop(return(paste0("Warning: dataset Q",quarter," ",year,"won't read from SPSS and doesn't exist as CSV:
