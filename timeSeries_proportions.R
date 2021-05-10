@@ -1,8 +1,8 @@
 
 #----Description of Script----
-#This scripts takes the data the outputs for part-time workers from GLMS.prj and 
+#This scripts takes the data the outputs for part-time workers and 
 #puts it in the format needed for the new (Explore Education and Statistic Platform) EES  platform
-# see https://rsconnect/rsc/stats-production-guidance/
+
 
 #Contents-----
 #1. the GLMS.prj outputs called NonGrad_yr_proportion.rds, grad_yr_proportion.rds and 
