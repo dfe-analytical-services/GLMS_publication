@@ -272,7 +272,6 @@ Yearly_salaries_by_gender.meta <- data.frame("col_name" = c("median", "age_group
 
 
 #encoding step------------------
-# use if using Source function to run this script. Since source function automatically adds encoding 
 Yearly_salaries_by_gender2.meta <- as.data.frame(sapply(Yearly_salaries_by_gender.meta, function(x) gsub("Â£", "£", x)))
 
 write.csv(Yearly_salaries_by_gender2.meta,
