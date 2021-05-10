@@ -31,19 +31,6 @@ Average_salary_by<-function(dataset,demographic){
 }
 
 
-#Note: %>% is the 'piping' operator used in the dplyr package, it passes the previous argument to the next function. So the above could be re-written as:
-#temp_dataset<-group_by(dataset, AgeGroup)
-#temp2_dataset<-dplyr::summarise(temp_dataset,p25=weighted.quantile(GRSSWK, PIWT16, probs=0.25),
-#                      median=weighted.median(GRSSWK,PIWT16),
-#                      p75=weighted.quantile(GRSSWK, PIWT16, probs=0.75))
-#age<-melt(temp2_dataset,id=c("p25","median","p75"))
-
-# where temporary datasets are used to pass the data to the next function instead of %>%
-
-#restructure dataset so that 'ageband' is a variable in each row, rather than a header: 
-#this will allow us to bind together multiple datasets as they'll have the same column headings
-
-
 
 Average_Salaries<-function(year){
   
@@ -85,7 +72,7 @@ Average_Salaries<-function(year){
  #find the weight variable for the dataset
  weight<-tail(sort(names(dataset[grep("PIWT", names(dataset))])),1)
  
-  #restrict to just those with an income weight. Those with 0 weight wouldn't be included in the weighted median anyway, but removing at this stage speeds up computation.
+  #restrict to just those with an income weight. 
   dataset<-dataset[which(dataset[,weight]!=0),]
   
 
