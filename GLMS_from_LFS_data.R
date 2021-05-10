@@ -16,7 +16,7 @@ library("spatstat")
 readLFS<-function(quarter, year){
 
 #Latest data
-test<-read.spss(paste0("insert secure area address",year," Q",quarter,".sav"),to.data.frame=TRUE)
+test<-read.spss(paste0("LFS_data_filepath",year," Q",quarter,".sav"),to.data.frame=TRUE)
 
 
 #Select variables needed
@@ -53,7 +53,7 @@ readLFS_reweight<-function(quarter, year){
   
   #Latest data
   
-  test<-read.spss(paste0("insert secure area address",year," Q",quarter,"_reweighted_Oct20.sav"),to.data.frame=TRUE)
+  test<-read.spss(paste0("LFS_data_filepath",year," Q",quarter,"_reweighted_Oct20.sav"),to.data.frame=TRUE)
   
   
   #Select variables needed
