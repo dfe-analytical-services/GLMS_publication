@@ -1,7 +1,5 @@
 #----Load library----  
 library(plyr)
-#Employment Statistics
-#Add in plyr library for nice frequency tables
 
 #----Recode Variables----
 #Recode variables for ease of grouping in the publication.
