@@ -481,8 +481,7 @@ GradBreak_salary_Demographics.meta <- data.table("col_name" = c("median",
 
 
 
-#OPTIONAL:encoding step------------------
-#Only use if using Source function to run this script. Since source function automatically adds encoding 
+#:encoding step------------------ 
 GradBreak_salary_Demographics2.meta <- as.data.frame(sapply(GradBreak_salary_Demographics.meta, function(x) gsub("Â£", "£", x)))
 
 write.csv(GradBreak_salary_Demographics2.meta,
