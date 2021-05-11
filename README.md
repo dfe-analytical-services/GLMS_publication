@@ -1,5 +1,5 @@
 **Introduction**  
-These scripts produce supporting data for the GLMS 2020 publication, where 2020 refers to the survey year.
+These scripts produce supporting data for the Graduate Labour Market 2020 publication, where 2020 refers to the survey year.
 
 **Requirements**  
 i . *Software requirements*  
