@@ -120,8 +120,7 @@ library("rlang")
   headline_stats<-rbind(Headline_stats,Headline_stats_young)
   
   assign(paste0("Headline_Q",quarter,"_",year),headline_stats,envir = globalenv())
-  
-  #write.csv(headline_stats,paste0("Outputs_folder/Headline_Q",quarter,"_",year,".csv"))
+
   
 }
 
