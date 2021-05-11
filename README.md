@@ -9,9 +9,10 @@ i . *Software requirements*
  ii. *Data Requirements*  
 Access to Labour Force Survey Quarterly Datasets  
 
-iii. folder structure    
-Create Output_folder containing EES_rds, EES_csv folders   
-Create dataset folders  Rds_datasets, csv_datasets  
+iii. folder structure  
+Create an area to save data files in and then:  
+Create Output_folder containing EES_rds, EES_csv folders,   
+Create dataset folders  Rds_datasets, csv_datasets.  
 
 **Code Description**  
 The main script is called **GLMS_outputs.R**
