@@ -38,7 +38,7 @@ source("GLMS_Employment_Rate_levels2.R")  #this also adds columns to output the
 
 #1.5----Salaries----
 #Add in the function to calculate median (and 25th & 75th percentiles)
-source("Code/GLMS/GLMS_Salaries.R")
+source("GLMS_Salaries.R")
 
 
 #2.----Set data range and get datasets ----                           
