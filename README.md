@@ -44,6 +44,5 @@ These scripts estimate the proportion of non gradautes and graduates that work p
 j. GLMS_confidence_intervals.R  
 This script calculates the confidence intervals for quarterly employment rates.  
 
- k. Grad_BreakDown.R, Quart_TimeSeries.R, timeSeries_proportions.R   
-This script converts all analysis outputs into the format that is readable by the Explore Education Statistics (EES) platform    
+
 
