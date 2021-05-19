@@ -1,4 +1,4 @@
-**Background**  
+## **Background**  
 This R project produces supporting data for the Graduate Labour Market (GLMS) 2020 publication, where 2020 refers to the survey year.
 
 This project contains code scripts that:  
@@ -7,29 +7,29 @@ This project contains code scripts that:
 
 The LFS data is from sample surveys so the statistics produced are always estimates.
 
-**Requirements**  
-i . *Software requirements*  
+## **Requirements**  
+i .  *Software requirements*  
  Installation of R 3.6.2 or higher  
  Installation of RTools40 or higher  
 
- ii. *Data Requirements*  
+ ii.  *Data Requirements*  
 Access to LFS Quarterly Datasets,  
 this is only accessible to specified users.
 
-ii. Programming skills required (for editing or troubleshooting)    
+ii.  Programming skills required (for editing or troubleshooting)    
 R at an intermediate level
 
-**How to use**  
+### **How to use**  
 *Packages*  
 Package control is handled using renv. If this is your first time using the project  
 you may need to run renv::restore() 
 
-*Data*
+*Data*  
 The project sends and receives data from an internal area which is restricted to named
 users.
 
-**Code Description**  
-The main script is called **GLMS_outputs.R**
+### **Code Description**  
+The main script to run the program is called **GLMS_outputs.R**
 
 The main script calls on the following scripts:  
 a. GLMS_from_LFS_data.R  
@@ -58,10 +58,10 @@ These scripts estimate the proportion of non gradautes and graduates that work p
 j. GLMS_confidence_intervals.R  
 This script calculates the confidence intervals for quarterly employment rates.  
 
-**Contributing**  
+### **Contributing**  
 If you're interested in contributing to this project, get in touch with us  The GitHub repo is only a mirror and any changes made directly to it will be overwritten when the next update is mirrored.
 
-**Contact**  
+### **Contact**  
 statistics.development@education.gov.uk  
 
 
