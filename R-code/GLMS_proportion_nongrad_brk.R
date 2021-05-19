@@ -276,7 +276,7 @@ NonGrad_yr_proportion<-Reduce(rbind, NonGrad_list_yr) %>%
   mutate(graduate_type = "Non Grad")
 
 saveRDS(object = NonGrad_yr_proportion,
-        file = paste0(filepath, "Outputs_folder/EES_rds/NonGrad_yr_proportion_",start_year,"_",end_year,".rds"))
+        file = paste0(filepath, "NonGrad_yr_proportion_",start_year,"_",end_year,".rds"))
 
 #6.1 -----QA yearly function output----
 list_nonGrad_yr<- lapply(start_year:end_year,function(x)get(paste0("join_Non-Grad_data_Qa_",x)))
