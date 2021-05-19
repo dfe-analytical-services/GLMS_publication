@@ -1,4 +1,4 @@
-**Background** 
+**Background**  
 This R project produces supporting data for the Graduate Labour Market (GLMS) 2020 publication, where 2020 refers to the survey year.
 
 This project contains code scripts that:  
