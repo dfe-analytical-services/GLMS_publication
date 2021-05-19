@@ -24,7 +24,7 @@ R at an intermediate level
 Package control is handled using renv. If this is your first time using the project  
 you may need to run renv::restore() 
 
-*Database*
+*Data*
 The project sends and receives data from an internal area which is restricted to named
 users.
 
@@ -58,10 +58,10 @@ These scripts estimate the proportion of non gradautes and graduates that work p
 j. GLMS_confidence_intervals.R  
 This script calculates the confidence intervals for quarterly employment rates.  
 
-**Contributing**
+**Contributing**  
 If you're interested in contributing to this project, get in touch with us  The GitHub repo is only a mirror and any changes made directly to it will be overwritten when the next update is mirrored.
 
-**Contact**
+**Contact**  
 statistics.development@education.gov.uk  
 
 
