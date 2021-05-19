@@ -1,5 +1,11 @@
-**Introduction**  
-These scripts produce supporting data for the Graduate Labour Market 2020 publication, where 2020 refers to the survey year.
+**Background** 
+These scripts produce supporting data for the Graduate Labour Market (GLMS) 2020 publication, where 2020 refers to the survey year.
+
+This project contains code scripts that:  
+1. Imports quarterly Labour Force Survey (LFS) data sets 
+2.  Finds the employment rate (from individuals that work full-time and part-time), median salaries (from individuals that work full-time) and the proportion of people that work part-time for different graduates types based on defined characteristics.  
+
+The LFS data is from sample surveys so the statistics produced are always estimates.
 
 **Requirements**  
 i . *Software requirements*  
@@ -7,12 +13,20 @@ i . *Software requirements*
  Installation of RTools40 or higher  
 
  ii. *Data Requirements*  
-Access to Labour Force Survey Quarterly Datasets  
+Access to LFS Quarterly Datasets,  
+this is only accessible to specified users.
 
-iii. folder structure  
-Create an area to save data files in and then:  
-Create Output_folder containing EES_rds, EES_csv folders,   
-Create dataset folders  Rds_datasets, csv_datasets.  
+ii. Programming skills required (for editing or troubleshooting)    
+R at an intermediate level
+
+**How to use**  
+*Packages*  
+Package control is handled using renv. If this is your first time using the project  
+you may need to run renv::restore() 
+
+*Database*
+The project sends and receives data from an internal area which is restricted to named
+users.
 
 **Code Description**  
 The main script is called **GLMS_outputs.R**
@@ -43,6 +57,12 @@ These scripts estimate the proportion of non gradautes and graduates that work p
 
 j. GLMS_confidence_intervals.R  
 This script calculates the confidence intervals for quarterly employment rates.  
+
+**Contributing**
+If you're interested in contributing to this project, get in touch with us  The GitHub repo is only a mirror and any changes made directly to it will be overwritten when the next update is mirrored.
+
+**Contact**
+statistics.development@education.gov.uk  
 
 
 
