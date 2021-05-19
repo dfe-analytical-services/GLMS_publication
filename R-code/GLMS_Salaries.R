@@ -249,10 +249,10 @@ grad_dat_reform<-function(dataset){
   assign(paste0("grad_sal_",year),grad_sal,envir = globalenv())
   #Also write to an Excel file for ease of use by economics team.
   
-  write.csv(grad_sal,paste0(filepath, "Outputs_folder/GRAD_SAL_",year,".csv"))
+  write.csv(grad_sal,paste0(filepath, "GRAD_SAL_",year,".csv"))
   
   saveRDS(object = grad_sal,
-          file = paste0(filepath, "Outputs_folder/grad_sal_", year, ".rds"))
+          file = paste0(filepath, "grad_sal_", year, ".rds"))
   
   
   #----Graduate Break down Salaries (21-30):young graduates----
@@ -328,10 +328,10 @@ grad_dat_reform<-function(dataset){
   #rename the young_grad_sal dataset to reference the year and quarter it's run on and output to the global environment.
   assign(paste0("young_grad_sal_",year),young_grad_sal,envir = globalenv())
 
-  write.csv(young_grad_sal,paste0(filepath, "Outputs_folder/YOUNG_GRAD_SAL_", year, ".csv"))
+  write.csv(young_grad_sal,paste0(filepath, "YOUNG_GRAD_SAL_", year, ".csv"))
   
   saveRDS(object = young_grad_sal,
-          file = paste0(filepath, "Outputs_folder/young_grad_sal_", year, ".rds"))
+          file = paste0(filepath, "young_grad_sal_", year, ".rds"))
   
   }
   
