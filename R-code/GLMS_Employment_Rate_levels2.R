@@ -162,7 +162,7 @@ library("rlang")
   year_average$year<-year
   
   assign(paste0("Headline_",year),year_average,envir = globalenv())
-  #write.csv(year_average,paste0("Outputs for GLMS/Headline_",year,".csv"))
+
   
 }
 
@@ -393,10 +393,10 @@ Graduate_breakdown_year<-function(year){
   
 
   write.csv(output,
-            paste0(filepath, "Outputs_folder/Graduate_breakdown_lev_", year, ".csv"))
+            paste0(filepath, "Graduate_breakdown_lev_", year, ".csv"))
   
   saveRDS(object = output,
-          file = paste0(filepath, "Outputs_folder/Graduate_breakdown_lev_", year, ".rds"))
+          file = paste0(filepath, "Graduate_breakdown_lev_", year, ".rds"))
   
  
   
