@@ -7,8 +7,8 @@
 
 #Contents----
 #1. This sections sources functions
-#2. set year range and filepaths for data sets 
-#3  Gets quarterly datasets into the global environment
+#2. Input year range and filepath.  Gets quarterly datasets into the global environment   
+#3  Gives outputs 
 
 
 #1.----Functions used within the code----           
