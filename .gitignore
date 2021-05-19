@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.renvignore 
+CSV_datasets/*
+Output_for_GLMS/*
+
+
+
