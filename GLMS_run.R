@@ -33,8 +33,7 @@ source("R-code/GLMS_Recode_Variables.R")
 
 #1.4----Employment Rate----
 #Add in the function to calculate the employment rate
-source("R-code/GLMS_Employment_Rate_levels2.R")  #this also adds columns to output the 
-#employment,unemeployment and population levels that corresponds to the sample size.
+source("R-code/GLMS_Employment_Rate_levels2.R")  
 
 #1.5----Salaries----
 #Add in the function to calculate median (and 25th & 75th percentiles)
@@ -45,7 +44,7 @@ source("R-code/GLMS_Salaries.R")
 start_year = 2007 #Which year do you want to use LFS data from? 
 end_year = 2020 #Which year do you want the LFS data up to?
 
-filepath <- "insert address for area for saving data "
+filepath <- "insert filepath address "
 
 #2.1---- OPTIONAL STEP  Convert SPSS datasets to R:output ----
 #Convert all LFS data from Q1 of the start year to Q4 of the end year into R data format
@@ -74,12 +73,11 @@ ifelse(2020 %in% start_year:end_year,any(grepl("_old", names(Q2_2020))), NA )
 
 library(data.table) 
 
-#check that if you have the value labels loaded from 2016 datasets if analysing Q1_2015
+#QA: check that if you have the value labels loaded from 2016 datasets if analysing Q1_2015
 ifelse(!(2016 %in% start_year:end_year) & 2015 %in% start_year:end_year,
        "warning need to load 2016 data",NA)
 
-#assigns missing values to Q1_2015 but you need to make sure datasets 2016 are loaded 
-#too as the value labels are taken from this
+#assigns missing values to Q1_2015 
 ifelse(2015 %in% start_year:end_year & 2016 %in% start_year:end_year,
        source("assign.R"),NA)
        
@@ -104,10 +102,10 @@ list<-lapply(start_year:end_year,function(x)get(paste0("Headline_",x)))
 Yearly_employment<-Reduce(rbind,list)
 
 write.csv(Yearly_employment,
-          paste0(filepath,"Outputs_folder/Yearly_employment_",start_year,"_",end_year,".csv"))
+          paste0(filepath,"Yearly_employment_",start_year,"_",end_year,".csv"))
 
 saveRDS(object = Yearly_employment,
-        file = paste0(filepath, "Outputs_folder/EES_rds/Yearly_employment_",start_year,"_",end_year,".rds"))
+        file = paste0(filepath, "Yearly_employment_",start_year,"_",end_year,".rds"))
 
 #And employment rate for the graduate breakdowns
 Graduate_breakdown_year(end_year)
@@ -121,10 +119,10 @@ list<-lapply(start_year:end_year,function(x)get(paste0("Sal_",x)))
 Yearly_salaries<-Reduce(rbind,list)
 
 write.csv(Yearly_salaries,
-          paste0(filepath, "Outputs_folder/Yearly_salaries_",start_year,"_",end_year,".csv"))
+          paste0(filepath, "Yearly_salaries_",start_year,"_",end_year,".csv"))
 
 saveRDS(object = Yearly_salaries,
-        file = paste0(filepath, "Outputs_folder/Yearly_salaries_",start_year,"_",end_year,".rds"))
+        file = paste0(filepath, "Yearly_salaries_",start_year,"_",end_year,".rds"))
 
 #And salaries for the graduate breakdowns
 
