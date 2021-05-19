@@ -5,9 +5,7 @@
 #This function will  read the csv, subset and filter as in the function above
 #before saving as an RDS file.
 
-#check that new .rds files have been created. It takes about an hour to run this script on 
-#six .csv files
-
+#check that new .rds files have been created. 
 
 Catch_remaining_datasets<-function(quarter, year){
   test <-read.csv(paste0(filepath, "csv_datasets/", year," Q",quarter,".csv"))
@@ -34,7 +32,7 @@ Catch_remaining_datasets<-function(quarter, year){
   #restrict to population in England aged 16-64
   test2<-test2[which(test2$COUNTRY=="England" & test2$AGE>15 & test2$AGE<65),]
   
-  saveRDS(object = test2, file = paste0(filepath, "Rds_datasets/Q",quarter,"_",year,".rds"))
+  saveRDS(object = test2, file = paste0(filepath, "Q",quarter,"_",year,".rds"))
   assign(paste0("Q",quarter,"_",year),test2,envir = globalenv())
   }
 
