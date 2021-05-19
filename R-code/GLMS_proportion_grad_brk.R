@@ -272,7 +272,7 @@ grad_yr_proportion<-Reduce(rbind,grad_list_yr) %>%
   mutate(graduate_type = "Graduate")            # label with graduate type
 
 saveRDS(object = grad_yr_proportion,
-        file = paste0(filepath, "Outputs_folder/grad_yr_proportion_",start_year,"_",end_year,".rds"))
+        file = paste0(filepath, "grad_yr_proportion_",start_year,"_",end_year,".rds"))
 
 
 #6.1 -----QA summary table----
