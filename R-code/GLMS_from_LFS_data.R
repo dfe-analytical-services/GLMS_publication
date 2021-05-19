@@ -16,11 +16,11 @@ library("spatstat")
 readLFS<-function(quarter, year){
 
 #Latest data
-test<-read.spss(paste0("LFS_data_filepath",year," Q",quarter,".sav"),to.data.frame=TRUE)
+test<-read.spss(paste0("filepath",year," Q",quarter,".sav"),to.data.frame=TRUE)
 
 
 #Select variables needed
-
+fil
 colnames<-c("COUNTRY","SEX","AGE", names(test[grep("PWT", names(test))]), 
             names(test[grep("PIWT", names(test))]),
             names(test[grep("HIQUAL", names(test))]),"HIGHO",
@@ -38,7 +38,7 @@ test2 <- test[,available_columns]
 #restrict to population in England aged 16-64
 test2 <- test2[which(test2$COUNTRY=="England" & test2$AGE>15 & test2$AGE<65),]
 
-saveRDS(object = test2, file = paste0(filepath, "Rds_datasets/Q",quarter, "_", year, ".rds"))
+saveRDS(object = test2, file = paste0(filepath, "Q",quarter, "_", year, ".rds"))
 
 
 
@@ -53,7 +53,7 @@ readLFS_reweight<-function(quarter, year){
   
   #Latest data
   
-  test<-read.spss(paste0("LFS_data_filepath",year," Q",quarter,"_reweighted_Oct20.sav"),to.data.frame=TRUE)
+  test<-read.spss(paste0("filepath",year," Q",quarter,"_reweighted_Oct20.sav"),to.data.frame=TRUE)
   
   
   #Select variables needed
@@ -88,14 +88,12 @@ readLFS_reweight<-function(quarter, year){
 
 #----Load .rds datasets and check that they have read well into R---------
 #This function calls up RDs files already saved and loads them into the global environment
-#When it encounters and RDS file with 0 rows it gives a warning.#Some files don't read well from SPSS 
-#(google seems to suggest this is due to lable lengths)
+#When it encounters and RDS file with 0 rows it gives a warning.
 
-#For these files manually convert them to .CSV and then use script ? to then covert to .rds 
 
 read_LFS_from_project<-function(quarter, year){
   
-  test3<-readRDS(paste0(filepath, "Rds_datasets/Q", quarter, "_", year, ".rds"))
+  test3<-readRDS(paste0(filepath, "Q", quarter, "_", year, ".rds"))
   assign(paste0("Q", quarter, "_", year), test3,envir = globalenv())
   
   
