@@ -29,7 +29,7 @@ source("R-code/GLMS_from_LFS_data.R")
 
 #1.3----Recode variables----
 #Add in the function to recode variables in the LFS data to those used in the publication
-source("GLMS_Recode_Variables.R")
+source("R-code/GLMS_Recode_Variables.R")
 
 #1.4----Employment Rate----
 #Add in the function to calculate the employment rate
@@ -38,7 +38,7 @@ source("R-code/GLMS_Employment_Rate_levels2.R")  #this also adds columns to outp
 
 #1.5----Salaries----
 #Add in the function to calculate median (and 25th & 75th percentiles)
-source("GLMS_Salaries.R")
+source("R-code/GLMS_Salaries.R")
 
 
 #2.----Set data range and get datasets ----                           
