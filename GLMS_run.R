@@ -9,7 +9,7 @@
 #1. This sections sources functions
 #2. set year range and filepaths for data sets 
 #3  Gets quarterly datasets into the global environment
-#4  convert data files into the format needed for explore education statistics platform. 
+
 
 #1.----Functions used within the code----           
 
@@ -18,14 +18,14 @@
 #Add in the function to change SPSS data to R data and to upload the converted saved datasets into the global enviroment 2.1.a.
 #This code will also give a warning if the SPSS data has not convert well into R data. If this happens do 1.2 OPTIONAL:csv datasets
 #to R data. 
-source("GLMS_from_LFS_data.R")
+source("R-code/GLMS_from_LFS_data.R")
 
 #1.2.----OPTIONAL: csv datasets to R data----
 #If spss datasets do not read well use this code to convert to .rds files after
 #they are manually converted to .csv files. 
 # Note you need to input the names of the .csv files into this page script. Then run source("GLMS_from_LFS_data.R") to
 #check all .rds files have been read in correctly
-#source("csv_to_rds_data.R")
+#source("R-code/csv_to_rds_data.R")
 
 #1.3----Recode variables----
 #Add in the function to recode variables in the LFS data to those used in the publication
@@ -33,7 +33,7 @@ source("GLMS_Recode_Variables.R")
 
 #1.4----Employment Rate----
 #Add in the function to calculate the employment rate
-source("GLMS_Employment_Rate_levels2.R")  #this also adds columns to output the 
+source("R-code/GLMS_Employment_Rate_levels2.R")  #this also adds columns to output the 
 #employment,unemeployment and population levels that corresponds to the sample size.
 
 #1.5----Salaries----
@@ -134,36 +134,17 @@ Graduate_breakdown_salaries(end_year)
 #Add in scripts to find the proportion of employed people that work part time.
 
 # Non graduates with defined demographic breakdowns
-source("GLMS_proportion_grad_brk.R")
+source("R-code/GLMS_proportion_grad_brk.R")
 # Graduates with demographic breakdowns
-source("GLMS_proportion_nongrad_brk.R")
+source("R-code/GLMS_proportion_nongrad_brk.R")
 # Graduates and  Non Graduates by  Working Age (16-64) 
-source("GLMS_proportion.R")
+source("R-code/GLMS_proportion.R")
 
 #3.5----Output:Confidence Intervals----
 
-source("GLMS_confidence_intervals.R")
+source("R-code/GLMS_confidence_intervals.R")
 
 
-#4.----convert outputs of GLMS for use on (Explore Education Statistics) EES platform----
-#Variables
 
-year <- end_year
-
-#labels for data file for EES platform timeseries i.e 2007 - 2019 should be 200719
-library(stringi)
-label_EES <-as.numeric(paste0(start_year,stri_sub(end_year,-2,-1)))
-
-# Employment Rates and Salaries for Grads,PostGrad and Non Grad with defined demographic profiles
-source("Grad_BreakDown.R")
-
-#Yearly Employment Rates and Salaries for Grads,PostGrad and Non Grad
-source("TimeSeries.R")
-
-#Proportions of Part time workers timeseries
-source("timeSeries_proportions.R")
-
-#Quarterly Employment Rates and confidence intervals for Grads,PostGrad and Non Grad
-source("Quart_TimeSeries.R")
 
 
