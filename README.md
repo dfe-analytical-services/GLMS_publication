@@ -13,7 +13,7 @@ i .  *Software requirements*
  Installation of RTools40 or higher  
 
  ii.  *Data Requirements*  
-The LFS datasets are accessed via agreement from the Office for National Statistics (ONS).
+The LFS data sets are accessed via agreement from the Office for National Statistics (ONS).
 
 ii.  Programming skills required (for editing or troubleshooting)    
 R at an intermediate level
@@ -27,11 +27,11 @@ you may need to run renv::restore()
 The project uses quarterly LFS survey data in the form of SPSS datasets which are kept on a secure server.
 
 ### **Code Description**  
-The main script to run the program is called **GLMS_outputs_run.R**
+The main script to run the program is called **GLMS_run.R**
 
 The main script calls on the following scripts:  
 a. GLMS_from_LFS_data.R  
-This script imports the SPSS data sets and uploads saved rds files to the global enviroment.  
+This script imports SPSS data sets and saves them as Rds files to a secure server. The saved Rds files are then loaded into the global environment for usability by the other scripts found within the R-code folder. 
 
 b. csv_to_rds_data.R (optional step)  
 This script is used to convert csv files into rds files.  
@@ -42,11 +42,11 @@ This scripts assigns missing values corresponding to the HIQUAL15 variable (high
 d. GLMS_Recode_Variables.R  
 This script recodes the variables in the LFS to those used in the publication.  
 
-e. GLMS_Employment_Rate2.R  
+e. GLMS_Employment_Rate2.R 
 This scripts calculates the employment rate.  
 
 f. GLMS_Salaries.R  
-This script calculates the 25th and 75th percentile median salaries.  
+This script calculates the 25th, 50th and 90th percentile median salaries.  
 
 g. GLMS_proportion.R,  
 h. GLMS_proportion_nongrad_brk.R,  
