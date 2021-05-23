@@ -51,7 +51,7 @@ This script calculates the 25th, 50th and 90th percentile median salaries.
 g. GLMS_proportion.R,  
 h. GLMS_proportion_nongrad_brk.R,  
 i. GLMS_proportion_grad_brk.R  
-These scripts estimate the proportion of non gradautes and graduates that work part time.  
+These scripts estimate the proportion of non-gradautes and graduates that work part-time.  
 
 j. GLMS_confidence_intervals.R  
 This script calculates the confidence intervals for quarterly employment rates.  
