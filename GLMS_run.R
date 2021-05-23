@@ -44,7 +44,7 @@ source("R-code/GLMS_Salaries.R")
 start_year = 2007 #Which year do you want to use LFS data from? 
 end_year = 2020 #Which year do you want the LFS data up to?
 
-filepath <- "insert filepath address "
+filepath <- "insert address to where data is stored "
 
 #2.1---- OPTIONAL STEP  Convert SPSS datasets to R:output ----
 #Convert all LFS data from Q1 of the start year to Q4 of the end year into R data format
