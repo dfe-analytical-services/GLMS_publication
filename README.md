@@ -46,7 +46,7 @@ e. GLMS_Employment_Rate2.R
 This scripts calculates the employment rate.  
 
 f. GLMS_Salaries.R  
-This script calculates the 25th, 50th and 90th percentile median salaries.  
+This script calculates the 25th, 50th and 90th percentile salaries.  
 
 g. GLMS_proportion.R,  
 h. GLMS_proportion_nongrad_brk.R,  
