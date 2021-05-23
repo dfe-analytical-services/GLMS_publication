@@ -18,7 +18,7 @@ The LFS data sets are accessed via agreement from the Office for National Statis
 ii.  Programming skills required (for editing or troubleshooting)    
 R at an intermediate level
 
-### **How to use**  
+## **How to use**  
 *Packages*  
 Package control is handled using renv. If this is your first time using the project  
 you may need to run renv::restore() 
@@ -57,7 +57,7 @@ These scripts estimate the proportion of non-gradautes and graduates that work p
 j. GLMS_confidence_intervals.R  
 This script calculates the confidence intervals for quarterly employment rates.  
 
-### **Contributing**  
+## **Contributing**  
 If you're interested in contributing to this project, please get in touch with us (contact details below). The GitHub repo is currently only a copy of our internal working version
 
 ### **Contact**  
