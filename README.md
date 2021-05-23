@@ -31,7 +31,7 @@ The main script to run the program is called **GLMS_run.R**
 
 The main script calls on the following scripts:  
 a. GLMS_from_LFS_data.R  
-This script imports SPSS data sets and saves them as Rds files to a secure server. The saved Rds files are then loaded into the global environment for usability by the other scripts found within the R-code folder. 
+This script imports SPSS data sets and saves them as Rds files. The saved Rds files are kept on a secure server and loaded into the global environment for usability by the other scripts found within the R-code folder.
 
 b. csv_to_rds_data.R (optional step)  
 This script is used to convert csv files into rds files.  
