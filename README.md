@@ -13,8 +13,7 @@ i .  *Software requirements*
  Installation of RTools40 or higher  
 
  ii.  *Data Requirements*  
-Access to LFS Quarterly Datasets,  
-this is only accessible to specified users.
+The LFS datasets are accessed via agreement from the Office for National Statistics (ONS).
 
 ii.  Programming skills required (for editing or troubleshooting)    
 R at an intermediate level
@@ -25,18 +24,17 @@ Package control is handled using renv. If this is your first time using the proj
 you may need to run renv::restore() 
 
 *Data*  
-The project sends and receives data from an internal area which is restricted to named
-users.
+The project uses quarterly LFS survey data in the form of SPSS datasets which are kept on a secure server.
 
 ### **Code Description**  
-The main script to run the program is called **GLMS_outputs.R**
+The main script to run the program is called **GLMS_outputs_run.R**
 
 The main script calls on the following scripts:  
 a. GLMS_from_LFS_data.R  
 This script imports the SPSS data sets and uploads saved rds files to the global enviroment.  
 
 b. csv_to_rds_data.R (optional step)  
-This script is used to convert * csv files into * rds files.  
+This script is used to convert csv files into rds files.  
 
 c. assign.R  
 This scripts assigns missing values corresponding to the HIQUAL15 variable (highest qualification) for dataset quarter 1, year 2015.  
@@ -44,7 +42,7 @@ This scripts assigns missing values corresponding to the HIQUAL15 variable (high
 d. GLMS_Recode_Variables.R  
 This script recodes the variables in the LFS to those used in the publication.  
 
-e. GLMS_Employment_Rate.R  
+e. GLMS_Employment_Rate2.R  
 This scripts calculates the employment rate.  
 
 f. GLMS_Salaries.R  
@@ -59,7 +57,7 @@ j. GLMS_confidence_intervals.R
 This script calculates the confidence intervals for quarterly employment rates.  
 
 ### **Contributing**  
-If you're interested in contributing to this project, get in touch with us  The GitHub repo is only a mirror and any changes made directly to it will be overwritten when the next update is mirrored.
+If you're interested in contributing to this project, please get in touch with us (contact details below). The GitHub repo is currently only a copy of our internal working version
 
 ### **Contact**  
 statistics.development@education.gov.uk  
