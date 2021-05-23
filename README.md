@@ -29,7 +29,8 @@ The project uses quarterly LFS survey data in the form of SPSS datasets which ar
 ### **Code Description**  
 The main script to run the program is called **GLMS_run.R**
 
-The main script calls on the following scripts:  
+The main script calls on the following scripts:    
+
 a. GLMS_from_LFS_data.R  
 This script imports SPSS data sets and saves them as Rds files. The saved Rds files are kept on a secure server and loaded into the global environment for usability by the other scripts found within the R-code folder.
 
