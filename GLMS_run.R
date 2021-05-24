@@ -36,7 +36,7 @@ source("R-code/GLMS_Recode_Variables.R")
 source("R-code/GLMS_Employment_Rate_levels2.R")  
 
 #1.5----Salaries----
-#Add in the function to calculate median (and 25th & 75th percentiles)
+#Add in the function to calculate median (and 25th, 50th & 90th percentiles)
 source("R-code/GLMS_Salaries.R")
 
 
