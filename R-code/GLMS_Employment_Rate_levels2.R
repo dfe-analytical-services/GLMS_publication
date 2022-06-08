@@ -120,7 +120,8 @@ library("rlang")
   headline_stats<-rbind(Headline_stats,Headline_stats_young)
   
   assign(paste0("Headline_Q",quarter,"_",year),headline_stats,envir = globalenv())
-
+  
+  #write.csv(headline_stats,paste0("Outputs for GLMS/Headline_Q",quarter,"_",year,".csv"))
   
 }
 
@@ -162,11 +163,11 @@ library("rlang")
   year_average$year<-year
   
   assign(paste0("Headline_",year),year_average,envir = globalenv())
-
+  #write.csv(year_average,paste0("Outputs for GLMS/Headline_",year,".csv"))
   
 }
 
-#zzzzzz#zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz---------------------------
+-----------------------------------------
 
 
 #4. Datasets for Graduate_breakdown function----
@@ -393,10 +394,10 @@ Graduate_breakdown_year<-function(year){
   
 
   write.csv(output,
-            paste0(filepath, "Graduate_breakdown_lev_", year, ".csv"))
+            paste0(filepath, "Outputs_for_GLMS/Graduate_breakdown_lev_", year, ".csv"))
   
   saveRDS(object = output,
-          file = paste0(filepath, "Graduate_breakdown_lev_", year, ".rds"))
+          file = paste0(filepath, "Outputs_for_GLMS/EES_rds/Graduate_breakdown_lev_", year, ".rds"))
   
  
   

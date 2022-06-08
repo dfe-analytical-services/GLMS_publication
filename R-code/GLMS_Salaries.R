@@ -7,7 +7,7 @@
 #column name
 
 
-# uses a weighted average method to provide an unbiased estimate. (as in method 2 here: https://www.xycoon.com/quartiles.htm)
+#uses a weighted average method to provide an unbiased estimate. (as in method 2 here: https://www.xycoon.com/quartiles.htm)
 
 Average_salary_by<-function(dataset,demographic){
   #find the weight variable
@@ -17,9 +17,9 @@ Average_salary_by<-function(dataset,demographic){
  
   dataset%>%
     group_by_at(demographic)%>%
-    dplyr::summarise(p25=weighted.quantile(GRSSWK, !!sym(weight), probs=0.25),
-                     median=weighted.median(GRSSWK,!!sym(weight)),
-                     p90=weighted.quantile(GRSSWK, !!sym(weight), probs=0.90),
+    dplyr::summarise(p25=weighted.quantile(GRSSWK, !!sym(weight), probs=0.25, type =4, collapse = TRUE),
+                     p90=weighted.quantile(GRSSWK, !!sym(weight), probs=0.90, type =4, collapse = TRUE),
+                     median=weighted.median(GRSSWK,!!sym(weight), type = 4, collapse = TRUE),
                      mean=weighted.mean(GRSSWK,!!sym(weight)),
                      sample=n(),
                      population=sum(!!sym(weight)))%>% 
@@ -72,7 +72,7 @@ Average_Salaries<-function(year){
  #find the weight variable for the dataset
  weight<-tail(sort(names(dataset[grep("PIWT", names(dataset))])),1)
  
-  #restrict to just those with an income weight. 
+  #restrict to just those with an income weight. Those with 0 weight wouldn't be included in the weighted median anyway, but removing at this stage speeds up computation.
   dataset<-dataset[which(dataset[,weight]!=0),]
   
 
@@ -111,7 +111,8 @@ Average_Salaries<-function(year){
   
   #rename the young_grad_sal dataset to reference the year and quarter it's run on and output to the global environment.
   assign(paste0("Sal_",year),all_sal,envir = globalenv())
-
+  #Also write to an Excel file for ease of use by economics team.
+  #write.csv(all_sal,paste0("Outputs for GLMS/SAL_",year,".csv"))
 }
 
 #-----Graduate Breakdown salaries(16-64) & Most recent year only------
@@ -249,10 +250,10 @@ grad_dat_reform<-function(dataset){
   assign(paste0("grad_sal_",year),grad_sal,envir = globalenv())
   #Also write to an Excel file for ease of use by economics team.
   
-  write.csv(grad_sal,paste0(filepath, "GRAD_SAL_",year,".csv"))
+  write.csv(grad_sal,paste0(filepath, "Outputs_for_GLMS/GRAD_SAL_",year,".csv"))
   
   saveRDS(object = grad_sal,
-          file = paste0(filepath, "grad_sal_", year, ".rds"))
+          file = paste0(filepath, "Outputs_for_GLMS/EES_rds/grad_sal_", year, ".rds"))
   
   
   #----Graduate Break down Salaries (21-30):young graduates----
@@ -327,11 +328,12 @@ grad_dat_reform<-function(dataset){
   
   #rename the young_grad_sal dataset to reference the year and quarter it's run on and output to the global environment.
   assign(paste0("young_grad_sal_",year),young_grad_sal,envir = globalenv())
-
-  write.csv(young_grad_sal,paste0(filepath, "YOUNG_GRAD_SAL_", year, ".csv"))
+  #Also write to an Excel file for ease of use by economics team.
+ 
+  write.csv(young_grad_sal,paste0(filepath, "Outputs_for_GLMS/YOUNG_GRAD_SAL_", year, ".csv"))
   
   saveRDS(object = young_grad_sal,
-          file = paste0(filepath, "young_grad_sal_", year, ".rds"))
+          file = paste0(filepath, "Outputs_for_GLMS/EES_rds/young_grad_sal_", year, ".rds"))
   
   }
   

@@ -1,6 +1,6 @@
 #--------Introduction----
-#This scripts finds the what proportion of those that are employed that work part-time(PT) 
-#The PT workers proportion is found for working age Graduates and Non-Graduates
+#This scripts finds the proportion of those that are employed that work part-time(PT) 
+#The PT workers proportion is found for working age Graduates and Non Graduates
 
 #--------Contents----------
 #1. a function that takes modified quarterly data set and finds counts/sample size by graduate type = Graduate and Non Grad
@@ -162,7 +162,7 @@ timeseries_pt_proportion <- Reduce(rbind,list_timeseries_pt_prop) %>%
   mutate(Breakdown = "16-64")
 
 saveRDS(object = timeseries_pt_proportion,
-        file = paste0(filepath, "timeseries_pt_proportion_",start_year,"_",end_year,".rds"))
+        file = paste0(filepath, "Outputs_for_GLMS/EES_rds/timeseries_pt_proportion_",start_year,"_",end_year,".rds"))
 
 
 #4.1 ----QA summary table----

@@ -223,9 +223,9 @@ output4$age<-"21-30"
 output5<-rbind(output3,output4)
 
 write.csv(output5,
-          paste0(filepath, "Emp_confidence_Intervals_",start_year,"_",end_year,".csv"))
+          paste0(filepath, "Outputs_for_GLMS/Emp_confidence_Intervals_",start_year,"_",end_year,".csv"))
 
 saveRDS(object = output5,
-        file = paste0(filepath, "Emp_confidence_Intervals_",start_year,"_",end_year,".rds"))
+        file = paste0(filepath, "Outputs_for_GLMS/EES_rds/Emp_confidence_Intervals_",start_year,"_",end_year,".rds"))
 
 
