@@ -16,7 +16,7 @@ library("matrixStats")
 readLFS<-function(quarter, year){
 
 #Latest data
-test<-read.spss(paste0("//vmt1pr-spss2a/LFS/Master/Quarterly datasets/2004 onwards/",year," Q",quarter,".sav"),to.data.frame=TRUE)
+test<-read.spss(paste0(LFSfilepath,"/Quarterly datasets/2004 onwards/",year," Q",quarter,".sav"),to.data.frame=TRUE)
 
 
 #Select variables needed
@@ -53,7 +53,7 @@ readLFS_reweight<-function(quarter, year){
 
   #Latest data
 
-  test<-read.spss(paste0("//vmt1pr-spss2a/LFS/Master/Quarterly datasets/2004 onwards/",year," Q",quarter,"_reweighted_Oct20.sav"),to.data.frame=TRUE)
+  test<-read.spss(paste0(LFSfilepath,"/Quarterly datasets/2004 onwards/",year," Q",quarter,"_reweighted_Oct20.sav"),to.data.frame=TRUE)
 
 
   #Select variables needed
